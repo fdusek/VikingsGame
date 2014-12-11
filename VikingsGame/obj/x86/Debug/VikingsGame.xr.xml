@@ -11,25 +11,28 @@
     <RootPropertyPathName Name="Upgrade" />
     <RootPropertyPathName Name="Save" />
     <RootPropertyPathName Name="DebugStillMsg" />
+    <RootPropertyPathName Name="CurrentCity" />
+    <RootPropertyPathName Name="Name" />
+    <RootPropertyPathName Name="ShowDetail" />
     <RootPropertyPathName Name="SailToClick" />
     <RootPropertyPathName Name="Cities" />
     <RootPropertyPathName Name="SelectedCity" />
-    <RootPropertyPathName Name="Id" />
     <RootPropertyPathName Name="BuildUpgradeClick" />
-    <RootPropertyPathName Name="AvailableUpgrades" />
-    <RootPropertyPathName Name="SAvailableUpgrade" />
-    <RootPropertyPathName Name="Name" />
-    <RootPropertyPathName Name="BuiltUpgrades" />
-    <RootPropertyPathName Name="SBuiltUpgrade" />
-    <RootPropertyPathName Name="Stats" />
+    <RootPropertyPathName Name="UpgradeStats" />
     <RootPropertyPathName Name="Value" />
     <RootPropertyPathName Name="Key" />
-    <RootPropertyPathName Name="CurrentCity" />
+    <RootPropertyPathName Name="AvailableUpgrades" />
+    <RootPropertyPathName Name="ShowAvailable" />
+    <RootPropertyPathName Name="SAvailableUpgrade" />
+    <RootPropertyPathName Name="BuiltUpgrades" />
+    <RootPropertyPathName Name="ShowBuilt" />
+    <RootPropertyPathName Name="SBuiltUpgrade" />
+    <RootPropertyPathName Name="Stats" />
     <RootPropertyPathName Name="Units" />
     <RootPropertyPathName Name="UnitCount" />
     <RootPropertyPathName Name="SelectedShip" />
-    <RootPropertyPathName Name="DecOrder" />
-    <RootPropertyPathName Name="IncOrder" />
+    <RootPropertyPathName Name="DecUnitsClick" />
+    <RootPropertyPathName Name="IncUnitsClick" />
     <RootPropertyPathName Name="TravelDescription" />
     <RootPropertyPathName Name="Ships" />
   </Roots.PropertyPathNames>
@@ -42,17 +45,18 @@
     <RootType FullName="Windows.UI.Xaml.Controls.Grid">
       <RootProperty Name="Background" />
       <RootProperty Name="Children" />
+      <RootProperty Name="Margin" />
       <RootProperty Name="RowDefinitions" />
       <RootProperty Name="ColumnDefinitions" />
-      <RootProperty Name="Margin" />
+      <RootProperty Name="Visibility" />
       <RootProperty Name="Width" />
       <RootProperty Name="HorizontalAlignment" />
-      <RootMethod Name="GetColumnSpan" />
-      <RootMethod Name="SetColumnSpan" />
       <RootMethod Name="GetColumn" />
       <RootMethod Name="SetColumn" />
       <RootMethod Name="GetRow" />
       <RootMethod Name="SetRow" />
+      <RootMethod Name="GetColumnSpan" />
+      <RootMethod Name="SetColumnSpan" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.Tools.DirectUI.ProxyTypes.ThemeResourceExtension" />
     <RootType FullName="VikingsGame.MainPage" />
@@ -60,6 +64,7 @@
       <RootProperty Name="Margin" />
       <RootProperty Name="Children" />
       <RootProperty Name="Orientation" />
+      <RootProperty Name="Visibility" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="VerticalAlignment" />
     </RootType>
@@ -71,6 +76,7 @@
       <RootProperty Name="Width" />
       <RootProperty Name="ItemTemplate" />
       <RootProperty Name="SelectedItem" />
+      <RootProperty Name="Visibility" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Data.Binding">
       <RootProperty Name="Mode" />
@@ -87,6 +93,7 @@
       <RootProperty Name="IsHitTestVisible" />
       <RootProperty Name="Margin" />
       <RootProperty Name="Inlines" />
+      <RootProperty Name="Visibility" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Button">
       <RootProperty Name="Content" />
@@ -122,14 +129,14 @@
       <RootMethod Name="SetItemType" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.Tools.DirectUI.ProxyTypes.StaticResourceExtension" />
+    <RootType FullName="Windows.UI.Xaml.Documents.Run">
+      <RootProperty Name="Text" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ItemsControl">
       <RootProperty Name="ItemsSource" />
       <RootProperty Name="BorderThickness" />
       <RootProperty Name="Margin" />
       <RootProperty Name="ItemTemplate" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Documents.Run">
-      <RootProperty Name="Text" />
     </RootType>
     <RootType FullName="VikingsGame.View.HarborView" />
   </Roots.RootTypes>

@@ -140,7 +140,7 @@ namespace VikingsGame.ViewModel
         public string Val3 { get; set; }
 
 
-        private City _playerCity = new City(1, 1, 0);
+        private City _playerCity = new City(1, 1, 0, "Roskilde");
 
         public City PlayerCity
         {
@@ -166,10 +166,10 @@ namespace VikingsGame.ViewModel
             Val1 = "0";
 
             PlayerCity.Update += OnUpdate;
-            PlayerCity.Ships.Add(new Ship(PlayerCity, 0));
-            PlayerCity.Ships.Add(new Ship(PlayerCity, 1));
-            PlayerCity.Ships.Add(new Ship(PlayerCity, 2));
-            _enemyCities.Add(new City(1, 2, 1) { Cash = 10, Units = new WarriorGroup(1) });
+            PlayerCity.BuildShip();
+            PlayerCity.BuildShip();
+            PlayerCity.BuildShip();
+            _enemyCities.Add(new City(1, 2, 1, "London") { Cash = 10, Units = new WarriorGroup(1) });
             DebugMsg = "enemy city added with ID 1, faction id 2, cash 10 and 1 unit";
         }
 

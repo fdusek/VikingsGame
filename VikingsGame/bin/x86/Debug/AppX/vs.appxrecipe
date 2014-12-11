@@ -26,7 +26,7 @@
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Filip\documents\visual studio 2013\Projects\VikingsGame\VikingsGame\bin\x86\Debug\VikingsGame.exe">
       <PackagePath>VikingsGame.exe</PackagePath>
-      <Modified>2014-12-10T11:38:00.550</Modified>
+      <Modified>2014-12-11T10:39:34.383</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\SQLite.WinRT81\3.8.7.1\Redist\Debug\x86\sqlite3.dll">
       <PackagePath>sqlite3.dll</PackagePath>
@@ -70,11 +70,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Filip\documents\visual studio 2013\Projects\VikingsGame\VikingsGame\bin\x86\Debug\View\HarborView.xbf">
       <PackagePath>View\HarborView.xbf</PackagePath>
-      <Modified>2014-12-10T11:38:00.192</Modified>
+      <Modified>2014-12-11T08:31:43.722</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Filip\documents\visual studio 2013\Projects\VikingsGame\VikingsGame\bin\x86\Debug\VikingsGame.xr.xml">
       <PackagePath>VikingsGame.xr.xml</PackagePath>
-      <Modified>2014-12-10T11:38:00.142</Modified>
+      <Modified>2014-12-11T08:31:43.691</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Filip\documents\visual studio 2013\Projects\VikingsGame\VikingsGame\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>

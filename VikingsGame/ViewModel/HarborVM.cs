@@ -30,6 +30,25 @@ namespace VikingsGame.ViewModel
             set { _ships = value; }
         }
 
+        public object ShowAvailable
+        {
+            get;
+            set;
+        }
+
+        public object ShowBuilt
+        {
+            get;
+            set;
+        }
+
+
+        public object ShowDetail
+        {
+            get;
+            set;
+        }
+
 
         private Ship _selectedShip;
 
@@ -39,30 +58,74 @@ namespace VikingsGame.ViewModel
             set
             {
                 _selectedShip = value;
+                if (_selectedShip != null)
+                {
+                    AvailableUpgrades = new ObservableCollection<Upgrade>(_selectedShip.AvailableUpgrades);
+                    BuiltUpgrades = new ObservableCollection<Upgrade>(_selectedShip.BuiltUpgrades);
+                    ShowDetail = Visibility.Visible;
+                }
+                else
+                {
+                    AvailableUpgrades.Clear();
+                    BuiltUpgrades.Clear();
+                    Stats.Clear();
+                    ShowDetail = Visibility.Collapsed;
+
+                }
                 RaisePropertyChangedEvent("SelectedShip");
-
-                AvailableUpgrades = new ObservableCollection<Upgrade>(_selectedShip.AvailableUpgrades);
-                BuiltUpgrades = new ObservableCollection<Upgrade>(_selectedShip.BuiltUpgrades);
-
                 RaisePropertyChangedEvent("AvailableUpgrades");
                 RaisePropertyChangedEvent("BuiltUpgrades");
-
-
+                RaisePropertyChangedEvent("ShowDetail");
                 RaisePropertyChangedEvent("Stats");
+
             }
         }
 
         private void Blah(object sender, object e)
         {
-            
+
         }
 
         #endregion
 
         #region Upgrades
 
-        public ObservableCollection<Upgrade> AvailableUpgrades { get; set; }
-        public ObservableCollection<Upgrade> BuiltUpgrades { get; set; }
+        private ObservableCollection<Upgrade> _availableUpgrades;
+        public ObservableCollection<Upgrade> AvailableUpgrades
+        {
+            get
+            {
+                if ((_availableUpgrades == null) || (_availableUpgrades.Count == 0))
+                {
+                    ShowAvailable = Visibility.Collapsed;
+                }
+                else
+                {
+                    ShowAvailable = Visibility.Visible;
+                }
+                RaisePropertyChangedEvent("ShowAvailable");
+                return _availableUpgrades;
+            }
+            set { _availableUpgrades = value; }
+        }
+        private ObservableCollection<Upgrade> _builtUpgrades;
+        public ObservableCollection<Upgrade> BuiltUpgrades
+        {
+            get
+            {
+                if ((_builtUpgrades == null) || (_builtUpgrades.Count == 0))
+                {
+                    ShowBuilt = false;
+                }
+                else
+                {
+                    ShowBuilt = true;
+                }
+                RaisePropertyChangedEvent("ShowBuilt");
+                return _builtUpgrades;
+            }
+            set { _builtUpgrades = value; }
+        }
 
         public ICommand BuildUpgradeClick
         {
@@ -163,6 +226,47 @@ namespace VikingsGame.ViewModel
             set { _stats = value; }
         }
 
+        public ICommand DecUnitsClick
+        {
+            get { return new DelegateCommand(_decUnitsClick); }
+        }
+
+        private void _decUnitsClick()
+        {
+            if (_currentCity.Units.UnitCount > 0)
+            {
+                _currentCity.Units.UnitCount -= 1;
+                SelectedShip.Units.UnitCount += 1;
+                RaisePropertyChangedEvent("Stats");
+                RaisePropertyChangedEvent("UnitCount");
+            }
+            else
+            {
+                new MessageDialog("No units in city.").ShowAsync();
+            }
+        }
+
+        public ICommand IncUnitsClick
+        {
+            get { return new DelegateCommand(_incUnitsClick); }
+        }
+
+        private void _incUnitsClick()
+        {
+            if (SelectedShip.Units.UnitCount > 0)
+            {
+                _currentCity.Units.UnitCount += 1;
+                SelectedShip.Units.UnitCount -= 1;
+                RaisePropertyChangedEvent("Stats");
+                RaisePropertyChangedEvent("UnitCount");
+            }
+            else
+            {
+                new MessageDialog("No units on ship.").ShowAsync();
+            }
+        }
+
+
         #endregion
 
         #region Cities
@@ -212,11 +316,12 @@ namespace VikingsGame.ViewModel
             get { return _currentCity; }
             set { _currentCity = value; }
         }
-        
+
         public HarborVM()
         {
+            ShowDetail = Visibility.Collapsed;
             _currentCity = Core.Instance.PlayerCity;
-            _ships = new ObservableCollection<Ship>(_currentCity.Ships);
+            _ships = _currentCity.Ships;
             _stats = new ObservableCollection<StatsWorkaround>();
             //todo: Harbor owner doesnt have to be always player, so not always EnemyCities
             _cities = new ObservableCollection<City>(Core.Instance.EnemyCities);
