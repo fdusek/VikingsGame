@@ -6,12 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
+using VikingsGame.Model.Base;
 using VikingsGame.Observable;
 
 namespace VikingsGame.Model
 {
-    class City : ObservableObject
+    class City : RealtimeGameObject
     {
+        #region Fields
         private double _cash;
         public double Cash
         {
@@ -22,32 +24,46 @@ namespace VikingsGame.Model
                 {
                     throw new ArgumentOutOfRangeException("value", "Cash minimum is 0");
                 }
-                else
-                {
-                    _cash = value;
-                }
+                _cash = value;
             }
         }
 
-        public int Id;
-        public int FactionId;
-        public int Level;
-        private double CashPerTick = 1;
-        private double WarriorsPerTick = 0.05;
-        public double WarriorsAvailable { get; private set; }
-        public WarriorGroup Units;
-        public Collection<Ship> Ships;
+        public int Id { get; private set; }
+        public int FactionId { get; private set; }
+        public int Level { get; private set; }
 
-        public City()
+        public string Name
         {
+            get;
+            private set;
+        }
+
+        public double WarriorsAvailable { get; private set; }
+        public WarriorGroup Units { get; set; }
+        public ObservableCollection<Ship> Ships { get; set; }
+
+        #endregion
+
+        public City(int level, int factionId, int id, string name)
+        {
+            Name = name;
+            Id = id;
+            FactionId = factionId;
+            Level = level;
             Cash = 10;
             Units = new WarriorGroup(2);
             Ships = new ObservableCollection<Ship>();
 
-            var dispatcherTimer = new DispatcherTimer();
-            dispatcherTimer.Tick += _tick;
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 1);
-            dispatcherTimer.Start();
+            Stats["CashPerTick"] = 10;
+            Stats["WarriorsPerTick"] = 3;
+
+            AvailableUpgrades.Add(new Upgrade(1));
+            AvailableUpgrades.Add(new Upgrade(0));
+
+            //var dispatcherTimer = new DispatcherTimer();
+            //dispatcherTimer.Tick += _tick;
+            //dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 1);
+            //dispatcherTimer.Start();
         }
 
         private int GetNewShipId()
@@ -71,7 +87,8 @@ namespace VikingsGame.Model
             var newShip = new Ship(this, GetNewShipId());
             if (newShip.Price < Cash)
             {
-                Cash -= newShip.Price;
+                Cash -= newShip.GetStat("Price");
+
                 newShip.LostBattle += ShipLost;
                 Ships.Add(newShip);
             }
@@ -85,37 +102,26 @@ namespace VikingsGame.Model
                 WarriorsAvailable -= count;
             }
 
-            Units.UnitCount += (int)Math.Round(WarriorsAvailable);
-            WarriorsAvailable -= (int)Math.Round(WarriorsAvailable);
+            //Units.UnitCount += (int)Math.Round(WarriorsAvailable);
+            //WarriorsAvailable -= (int)Math.Round(WarriorsAvailable);
         }
+
+
         #region Event Handlers
+        public override void _tick(object sender, object e)
+        {
+            WarriorsAvailable += GetStat("WarriorsPerTick");
+
+            Cash += GetStat("WarriorsPerTick") - Units.GetStat("CostPerTick");
+            //RaisePropertyChangedEvent("Cash");}}
+            OnUpdate(EventArgs.Empty);
+        }
 
         private void ShipLost(object sender, object e)
         {
             Ships.Remove((Ship)sender);
         }
 
-        #endregion
-
-        #region Events
-        public void _tick(object sender, object e)
-        {
-            WarriorsAvailable += WarriorsPerTick;
-            Cash += CashPerTick - Units.CostPerTick;
-            RaisePropertyChangedEvent("Cash");
-            OnUpdate(EventArgs.Empty);
-        }
-
-        protected virtual void OnUpdate(EventArgs e)
-        {
-            EventHandler handler = Update;
-            if (handler != null)
-            {
-                handler(this, e);
-            }
-        }
-
-        public event EventHandler Update;
         #endregion
     }
 }

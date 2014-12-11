@@ -6,71 +6,98 @@ using System.Threading.Tasks;
 using Windows.Networking.NetworkOperators;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media.Animation;
+using VikingsGame.Model.Base;
+using VikingsGame.Other;
 
 namespace VikingsGame.Model
 {
-    class Ship
+    class Ship : RealtimeGameObject
     {
-        public City TargetCity;
-        public int Id;
-        private Double _speed;
-        public int FactionId;
-        public Double TravelRemain;
-        public WarriorGroup Units;
-        public int Price = 5;
+        #region Fields
+        public string Name { get; set; }
+        public City DestinationCity { get; set; }
+        public int Id { get; set; }
+        public double Price { get; set; }
+        public int FactionId { get; set; }
+        public Double TravelRemain { get; set; }
+        public WarriorGroup Units { get; set; }
+        public string TravelDescription
+        {
+            get
+            {
+                if (TravelRemain > 0)
+                {
+                    return "This ship is now sailing to " + DestinationCity.Name + " and will reach its destination in " + TravelRemain + " seconds";
+                }
+                else
+                {
+                    return "This ship is staying safely in waters of "+DestinationCity.Name;
+                }
+            }
+        }
+
+        #endregion
 
         public Ship(City city, int shipId)
         {
-            TargetCity = city;
+            DestinationCity = city;
+            FactionId = city.FactionId;
             Id = shipId;
             TravelRemain = 0;
-            _speed = 0;
+
+            AvailableUpgrades.Add(new Upgrade(0) { Name = "Unsinkable" });
+            AvailableUpgrades.Add(new Upgrade(0) { Name = "Undefeatable" });
+
+            BuiltUpgrades.Add(new Upgrade(0) { Name = "Bad upgrade 1" });
+            BuiltUpgrades.Add(new Upgrade(0) { Name = "Bad upgrade 2" });
+
+            Name = ShipNames.GetRandomName();
+
+            Stats["Speed"] = 0;
+            Price = 5;
 
             Units = new WarriorGroup(0);
             Units.Update += Refresh;
-            
-
-            var dispatcherTimer = new DispatcherTimer();
-            dispatcherTimer.Tick += _tick;
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 1);
-            dispatcherTimer.Start();
         }
 
-
-
-        public void SailTo(City to)
+        public void SailTo(City destination)
         {
+            //TODO: Count travel distance
             TravelRemain = 10;
-            TargetCity = to;
+            DestinationCity = destination;
         }
 
         public override string ToString()
         {
-            return "This ship has ID " + Id + " its target city ID is " + TargetCity.Id + " and has " + Units.UnitCount +
+            return "This ship has ID " + Id + " its target city ID is " + DestinationCity.Id + " and has " + Units.UnitCount +
                 " units, time remaining " + TravelRemain;
         }
 
         #region Event Handlers
         private void Refresh(object sender, object e)
         {
-            _speed = Units.UnitCount;
+            Stats["Speed"] = Units.UnitCount;
         }
 
-        private void _tick(object sender, object e)
+        public override void _tick(object sender, object e)
         {
             if (TravelRemain > 0)
             {
-                TravelRemain -= _speed;
+                TravelRemain -= Stats["Speed"];
+                RaisePropertyChangedEvent("TravelDescription");
+                RaisePropertyChangedEvent("TravelRemain");
             }
             else
             {
                 OnReachedDestination(EventArgs.Empty);
-                if ((TargetCity.FactionId != FactionId) && (TargetCity.FactionId != 0))
+                if ((DestinationCity.FactionId != FactionId) && (DestinationCity.FactionId != 0))
                 {
-                    if (!Units.FightWith(TargetCity.Units))
+                    if (!Units.FightWith(DestinationCity.Units))
                     {
                         OnLostBattle(EventArgs.Empty);
                     }
+                    RaisePropertyChangedEvent("Units");
+
                 }
             }
             OnUpdate(EventArgs.Empty);
@@ -96,19 +123,9 @@ namespace VikingsGame.Model
             }
         }
 
-        protected virtual void OnUpdate(EventArgs e)
-        {
-            EventHandler handler = Update;
-            if (handler != null)
-            {
-                handler(this, e);
-            }
-        }
 
         public event EventHandler LostBattle;
         public event EventHandler ReachedDestination;
-        public event EventHandler Update;
-
         #endregion
     }
 }

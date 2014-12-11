@@ -4,26 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Devices.Sensors;
+using VikingsGame.Model.Base;
 
 namespace VikingsGame.Model
 {
-    class WarriorGroup
+    class WarriorGroup : GameObject
     {
-        private double CostPerUnit = 0.3;
         public double CostPerTick;
-        
+
         private int _unitCount;
 
         public int UnitCount
         {
             get { return _unitCount; }
-            set {
-                if (value < 0 )
+            set
+            {
+                if (value < 0)
                 {
                     value = 0;
                 }
                 _unitCount = value;
-                CostPerTick = UnitCount*CostPerUnit;
+                CostPerTick = UnitCount * GetStatMultiplier("CostPerUnit");
+                RaisePropertyChangedEvent("UnitCount");
                 OnUpdate(EventArgs.Empty);
             }
         }
@@ -31,7 +33,10 @@ namespace VikingsGame.Model
         public WarriorGroup(int unitCount)
         {
             _unitCount = unitCount;
-            CostPerTick = UnitCount * CostPerUnit;
+            Stats = new Dictionary<string, double>
+            {
+                {"CostPerUnit", 0.3}
+            };
         }
 
         public bool FightWith(WarriorGroup enemyGroup)
@@ -40,23 +45,11 @@ namespace VikingsGame.Model
             u2 = enemyGroup.UnitCount;
             u1 = _unitCount;
 
-            enemyGroup.UnitCount = u2-u1;
+            enemyGroup.UnitCount = u2 - u1;
             UnitCount = u1 - u2;
             OnUpdate(EventArgs.Empty);
 
             return UnitCount > 0;
         }
-
-        protected virtual void OnUpdate(EventArgs e)
-        {
-            EventHandler handler = Update;
-            if (handler != null)
-            {
-                handler(this, e);
-            }
-        }
-
-        public event EventHandler Update;
-
     }
 }
