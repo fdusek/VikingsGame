@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>FILIP-PC</Machine>
+    <WindowsUser>Filip</WindowsUser>
+    <TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
+    <SolutionConfiguration>Debug|x86</SolutionConfiguration>
+    <PackageArchitecture>x86</PackageArchitecture>
+    <PackageIdentityName>3f10113f-7fc3-4086-97f8-bd8897f4d1c2</PackageIdentityName>
+    <IntermediateOutputPath>C:\Users\Filip\documents\visual studio 2013\Projects\VikingsGame\VikingsGame\obj\x86\Debug\</IntermediateOutputPath>
+    <RegisteredManifestChecksum>DAAB811BA6A1919A231EBA936FEC3724FA8DEFF1CE2C0D9FE1C63DD3D51071EE</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>3f10113f-7fc3-4086-97f8-bd8897f4d1c2_1.0.0.0_x86__5953vnxg3cd5m</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>3f10113f-7fc3-4086-97f8-bd8897f4d1c2_5953vnxg3cd5m!App</RegisteredUserModeAppID>
+    <RegisteredPackageID>3f10113f-7fc3-4086-97f8-bd8897f4d1c2</RegisteredPackageID>
+    <RegisteredPackagePublisher>CN=Filip</RegisteredPackagePublisher>
+    <RegisteredVersion>1.0.0.0</RegisteredVersion>
+    <JitOptimizationSuppressed>True</JitOptimizationSuppressed>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\Users\Filip\documents\visual studio 2013\Projects\VikingsGame\VikingsGame\bin\x86\Debug\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2014-12-10T10:40:12.155</Modified>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\Users\Filip\documents\visual studio 2013\Projects\VikingsGame\VikingsGame\bin\x86\Debug\VikingsGame.exe">
+      <PackagePath>VikingsGame.exe</PackagePath>
+      <Modified>2014-12-11T10:39:34.383</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\SQLite.WinRT81\3.8.7.1\Redist\Debug\x86\sqlite3.dll">
+      <PackagePath>sqlite3.dll</PackagePath>
+      <Modified>2014-11-06T09:25:02.841</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Filip\documents\visual studio 2013\Projects\VikingsGame\VikingsGame\Assets\Logo.scale-100.png">
+      <PackagePath>Assets\Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2013-07-23T04:01:02.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Filip\documents\visual studio 2013\Projects\VikingsGame\VikingsGame\Assets\SmallLogo.scale-100.png">
+      <PackagePath>Assets\SmallLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2013-07-23T04:01:02.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Filip\documents\visual studio 2013\Projects\VikingsGame\VikingsGame\Assets\SplashScreen.scale-100.png">
+      <PackagePath>Assets\SplashScreen.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2013-07-23T04:01:02.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Filip\documents\visual studio 2013\Projects\VikingsGame\VikingsGame\Assets\StoreLogo.scale-100.png">
+      <PackagePath>Assets\StoreLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2013-07-23T04:01:02.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Filip\documents\visual studio 2013\Projects\VikingsGame\VikingsGame\Imgs\placeholder.jpg">
+      <PackagePath>Imgs\placeholder.jpg</PackagePath>
+      <Modified>2014-12-08T09:59:53.816</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Filip\documents\visual studio 2013\Projects\VikingsGame\VikingsGame\bin\x86\Debug\App.xbf">
+      <PackagePath>App.xbf</PackagePath>
+      <Modified>2014-12-09T17:45:43.704</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Filip\documents\visual studio 2013\Projects\VikingsGame\VikingsGame\bin\x86\Debug\MainPage.xbf">
+      <PackagePath>MainPage.xbf</PackagePath>
+      <Modified>2014-12-09T17:45:43.704</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Filip\documents\visual studio 2013\Projects\VikingsGame\VikingsGame\bin\x86\Debug\View\DebugView.xbf">
+      <PackagePath>View\DebugView.xbf</PackagePath>
+      <Modified>2014-12-09T20:11:31.249</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Filip\documents\visual studio 2013\Projects\VikingsGame\VikingsGame\bin\x86\Debug\View\HarborView.xbf">
+      <PackagePath>View\HarborView.xbf</PackagePath>
+      <Modified>2014-12-11T08:31:43.722</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Filip\documents\visual studio 2013\Projects\VikingsGame\VikingsGame\bin\x86\Debug\VikingsGame.xr.xml">
+      <PackagePath>VikingsGame.xr.xml</PackagePath>
+      <Modified>2014-12-11T08:31:43.691</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Filip\documents\visual studio 2013\Projects\VikingsGame\VikingsGame\bin\x86\Debug\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+      <Modified>2014-12-10T10:40:10.696</Modified>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\Microsoft.VCLibs\12.0\">
+      <Name>Microsoft.VCLibs.120.00.Debug</Name>
+      <Version>12.0.21005.1</Version>
+      <Architecture>ARM</Architecture>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.120.00.Debug, MinVersion = 12.0.21005.1</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\Microsoft.VCLibs\12.0\.\AppX\Debug\ARM\Microsoft.VCLibs.ARM.Debug.12.00.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\Microsoft.VCLibs\12.0\">
+      <Name>Microsoft.VCLibs.120.00.Debug</Name>
+      <Version>12.0.21005.1</Version>
+      <Architecture>x64</Architecture>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.120.00.Debug, MinVersion = 12.0.21005.1</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\Microsoft.VCLibs\12.0\.\AppX\Debug\x64\Microsoft.VCLibs.x64.Debug.12.00.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\Microsoft.VCLibs\12.0\">
+      <Name>Microsoft.VCLibs.120.00.Debug</Name>
+      <Version>12.0.21005.1</Version>
+      <Architecture>x86</Architecture>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.120.00.Debug, MinVersion = 12.0.21005.1</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\Microsoft.VCLibs\12.0\.\AppX\Debug\x86\Microsoft.VCLibs.x86.Debug.12.00.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+  </ItemGroup>
+</Project>
